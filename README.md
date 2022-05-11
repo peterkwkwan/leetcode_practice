@@ -2,4 +2,5 @@
 
 ### Neetcode 150
 
-https://neetcode.io/
+- https://neetcode.io/
+- Using Leetcode Extension on VSCode (LeetCode.vscode-leetcode)
