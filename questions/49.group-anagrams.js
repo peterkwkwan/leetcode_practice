@@ -23,7 +23,6 @@ var groupAnagrams = function(strs) {
         }
  
     })
-
     
     anagramMap.forEach((value) => result.push(value))
 
