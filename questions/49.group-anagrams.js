@@ -12,19 +12,20 @@
 var groupAnagrams = function(strs) {
     const result = []
     const anagramMap = new Map()
-    strs.forEach((word, idx) => {
-        let sortedWord = word.split('').sort().join()
+    strs.forEach(word => {
+        let sortedWord = word.split('').sort().join('')
         let foundWord = anagramMap.get(sortedWord)
         if(foundWord){
-            result.push([strs[foundWord], strs[idx]])
-            anagramMap.delete(sortedWord)
+            anagramMap.set(sortedWord, [...foundWord, word])
+       
         }else {
-            anagramMap.set(sortedWord, idx)
+            anagramMap.set(sortedWord, [word])
         }
+ 
     })
-    for(const [, value] of anagramMap.entries()){
-        result.push([strs.value])
-    }
+
+    
+    anagramMap.forEach((value) => result.push(value))
 
     return result
 };
