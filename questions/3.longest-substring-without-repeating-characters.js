@@ -10,25 +10,27 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-    let longestString = ""
+    let currentString = ''
 
     let longestCount = 0
 
-    let splitStringArray = s.split('')
-
-    splitStringArray.forEach((letter, idx) => {
-        if (!longestString.includes(letter)){
-            longestString += letter
-            console.log(longestString)
-            longestCount = Math.max(longestString.length, longestCount)
+    for(let i = 0; i < s.length; i++){
+        if(!currentString.includes(s[i])){
+            currentString += s[i]
+            longestCount = Math.max(currentString.length, longestCount)
         } else {
-            const firstOccurenceIndex = s.indexOf(letter)
-            longestString = s.slice(firstOccurenceIndex, idx)
-            console.log(longestString)
+            currentString += s[i]
+            for(let j = 0; j < currentString.length; j++){
+                if(currentString[j] === s[i]){
+                    currentString = currentString.substring(j + 1, currentString.length)
+                    break
+                }
+            }
         }
-    })
+    }
 
     return longestCount
+
 };
 // @lc code=end
 
