@@ -18,10 +18,13 @@ var characterReplacement = function(s, k) {
 
     let left = 0
 
+    let maxF = 0
     for(let right = 0; right < s.length; right++){
        charMap[s[right]] = (charMap[s[right]] ?? 0 ) + 1
  
-        while((right - left + 1) - Math.max(...Object.values(charMap)) > k){
+       maxF = Math.max(maxF, charMap[s[right]])
+       
+        while((right - left + 1) - maxF > k){
             charMap[s[left]] -= 1
             left ++
         }
